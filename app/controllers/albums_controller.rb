@@ -1,19 +1,19 @@
 class AlbumsController < ApplicationController
-  before_action :set_artist, only: [:index, :new, :create]
+  before_action :set_artist, only: [:index]
 
   def index
     @albums = policy_scope(@artist.albums)
   end
 
   def new
-    @artists = Artist.all
+    @artists_names = artists_names
     @album = Album.new
-    @album.artist = @artist
     authorize @album
   end
 
   def create
     @album = Album.new(album_params)
+    @artist = Artist.find(params[:album][:artist].to_i)
     @album.artist = @artist
     authorize @album
     if @album.save!
@@ -25,7 +25,9 @@ class AlbumsController < ApplicationController
 
   private
 
-
+  def artists_names
+    Artist.all.each { |artist| artist.name }
+  end
 
   def set_artist
     @artist = Artist.find(params[:artist_id])
@@ -34,4 +36,5 @@ class AlbumsController < ApplicationController
   def album_params
     params.require(:album).permit(:name, :year)
   end
+
 end
