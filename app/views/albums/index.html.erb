@@ -3,6 +3,10 @@
     <h2 class="mt-5 border-bottom"><strong>Albums</strong></h2>
   </div>
   <br>
+  <div>
+    <%= link_to "Add a new album", new_artist_album_path(@artist), class: "btn btn-primary" %>
+  </div>
+  <br>
   <div class="d-flex align-content-start flex-wrap">
     <% if @albums.present? %>
       <% @albums.each do |album| %>

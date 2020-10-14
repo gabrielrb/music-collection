@@ -1,0 +1,9 @@
+<h1 class="mt-4">New Album</h1>
+
+<%= simple_form_for [@artist, @album] do |f| %>
+<%= f.input :name %>
+<%= f.input :year %>
+<%= f.submit 'Submit', class: 'btn btn-primary' %>
+<% end %>
+
+<%= link_to "Back to albums", artist_albums_path(@artist), class: "btn btn-primary" %>
