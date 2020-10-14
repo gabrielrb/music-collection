@@ -18,6 +18,12 @@ artists.each do |element|
                       twitter: element.last['twitter']
   )
   artist.save!
+
+  3.times do
+    Album.new(name: ["nome numero uno", "SEGUNDO NUEMBRE", "Name Number Three"].sample,
+              year: rand(2000),
+              artist: artist).save!
+  end
 end
 
 puts "Done!"

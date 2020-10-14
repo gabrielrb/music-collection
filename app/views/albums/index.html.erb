@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="d-flex justify-content-center">
+    <h2 class="mt-5 border-bottom"><strong>Albums</strong></h2>
+  </div>
+  <br>
+  <div class="d-flex align-content-start flex-wrap">
+    <% if @albums.present? %>
+      <% @albums.each do |album| %>
+        <div class="col-4 mb-3">
+          <h2 class="border-bottom"><%= album.name %></h2>
+          <p><strong>Year:</strong> <%= album.year %></p>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

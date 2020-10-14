@@ -9,7 +9,7 @@
         <div class="col-4 mb-3">
           <h2 class="border-bottom"><%= artist.name %></h2>
           <p><strong>Twitter:</strong> <%= artist.twitter %></p>
-          <p><%= link_to "Albums", root_path, class: "btn btn-warning w-100" %></p>
+          <p><%= link_to "Albums", artist_albums_path(artist), class: "btn btn-warning w-100" %></p>
         </div>
       <% end %>
     <% end %>
