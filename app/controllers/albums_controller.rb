@@ -17,7 +17,7 @@ class AlbumsController < ApplicationController
     @artist = Artist.find(params[:album][:artist].to_i)
     @album.artist = @artist
     authorize @album
-    if @album.save!
+    if @album.save
       redirect_to artist_albums_path(@artist), notice: 'Your album was successfully created'
     else
       render :new
