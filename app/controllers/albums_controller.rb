@@ -1,5 +1,6 @@
 class AlbumsController < ApplicationController
-  before_action :set_artist, only: [:index]
+  before_action :set_artist, only: [:index, :edit, :update]
+  before_action :set_album, only: [:edit, :update]
 
   def index
     @albums = policy_scope(@artist.albums)
@@ -23,6 +24,17 @@ class AlbumsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @album.update(album_params)
+      redirect_to artist_albums_path(@artist), notice: "Your album was successfully updated"
+    else
+      render :edit
+    end
+  end
+
   private
 
   def artists_names
@@ -35,6 +47,11 @@ class AlbumsController < ApplicationController
 
   def album_params
     params.require(:album).permit(:name, :year)
+  end
+
+  def set_album
+    @album = Album.find(params[:id])
+    authorize @album
   end
 
 end
