@@ -1,10 +1,18 @@
-<h1 class="mt-4">New Album</h1>
+<div class="container">
+  <div class="d-flex justify-content-start">
+    <h1 class="mt-4">New Album</h1>
+  </div>
 
-<%= simple_form_for(@album) do |f| %>
-<%= f.input :name %>
-<%= f.input :year %>
-<%= f.input :artist, label: "Artist:", collection: @artists_names, input_html: { class: "beautiful-dropdown" } %>
-<%= f.submit 'Submit', class: 'btn btn-primary' %>
-<% end %>
+  <% if policy(@album).create? %>
+    <div>
+      <%= simple_form_for(@album) do |f| %>
+        <%= f.input :name %>
+        <%= f.input :year %>
+        <%= f.input :artist, label: "Artist:", collection: @artists_names, input_html: { class: "beautiful-dropdown" } %>
+        <%= f.submit 'Submit', class: 'btn btn-primary' %>
+        <%= link_to "Back to artist list", artists_path, class: "btn btn-secondary" %>
+      <% end %>
+    </div>
+  <% end %>
 
-<%= link_to "Back to albums", artists_path, class: "btn btn-primary" %>
+</div>

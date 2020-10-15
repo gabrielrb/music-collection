@@ -9,7 +9,12 @@
         <div class="col-4 mb-3">
           <h2 class="border-bottom"><%= album.name %></h2>
           <p><strong>Year:</strong> <%= album.year %></p>
-          <%= link_to "Edit", edit_artist_album_path(@artist, album), class: "btn btn-secondary" %>
+          <% if policy(album).edit? %>
+            <%= link_to "Edit", edit_artist_album_path(@artist, album), class: "btn btn-secondary" %>
+          <% end %>
+          <% if policy(album).destroy? %>
+            <%= link_to "Delete", artist_album_path(@artist, album), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-warning" %>
+          <% end %>
         </div>
       <% end %>
     <% end %>

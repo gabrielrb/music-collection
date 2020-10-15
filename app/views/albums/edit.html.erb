@@ -1,19 +1,19 @@
-<div class="container mt-5">
+<div class="container">
   <div class="d-flex justify-content-start">
     <h1 class="pt-5">Edit Album</h1>
   </div>
 
   <br>
 
-  <div>
-    <% if policy(@album).edit? %>
+  <% if policy(@album).edit? %>
+    <div>
       <%= simple_form_for [@artist, @album] do |f| %>
         <%= f.input :name %>
         <%= f.input :year %>
         <%= f.submit 'Update', class: 'btn btn-primary' %>
         <%= link_to "Return to albums list", artist_albums_path(@artist), class: "btn btn-secondary" %>
       <% end %>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 
 </div>

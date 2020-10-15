@@ -1,2 +1,20 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container">
+  <div class="d-flex justify-content-center">
+    <div>
+      <h1 class="mt-5 border-bottom text-center">Album Collection App</h1>
+    <br>
+      <div class="justify-content-center">
+        <div class="d-flex justify-content-around flex-column mt-3 pb-3">
+          <div class="row justify-content-around">
+            <% unless user_signed_in? %>
+              <%= link_to "Log in", new_user_session_path, class: "btn btn-primary col-5" %>
+              <%= link_to "Sign up", new_user_registration_path, class: "btn btn-warning col-5" %>
+            <% else %>
+              <%= link_to "Artist List", artists_path, class: "btn btn-primary" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
