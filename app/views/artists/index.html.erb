@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="d-flex justify-content-center">
+    <h2 class="mt-5 border-bottom"><strong>Artists available</strong></h2>
+  </div>
+  <br>
+  <div>
+    <%= link_to "Add a new album", new_album_path, class: "btn btn-primary" %>
+  </div>
+  <br>
+  <div class="d-flex align-content-start flex-wrap">
+    <% if @artists.present? %>
+      <% @artists.each do |artist| %>
+        <div class="col-4 mb-3">
+          <h2 class="border-bottom"><%= artist.name %></h2>
+          <p><strong>Twitter:</strong> <%= artist.twitter %></p>
+          <p><%= link_to "Albums", artist_albums_path(artist), class: "btn btn-warning w-100" %></p>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

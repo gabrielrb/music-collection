@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="d-flex justify-content-center">
+    <h2 class="mt-5 border-bottom"><strong> <%= @artist.name %>'s Albums</strong></h2>
+  </div>
+  <br>
+  <div class="d-flex align-content-start flex-wrap">
+    <% if @albums.present? %>
+      <% @albums.each do |album| %>
+        <div class="col-4 mb-3">
+          <h2 class="border-bottom"><%= album.name %></h2>
+          <p><strong>Year:</strong> <%= album.year %></p>
+          <%= link_to "Edit", edit_artist_album_path(@artist, album), class: "btn btn-secondary" %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
