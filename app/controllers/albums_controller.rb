@@ -7,7 +7,7 @@ class AlbumsController < ApplicationController
   end
 
   def new
-    @artists_names = artists_names
+    @artists = Artist.all
     @album = Album.new
     authorize @album
   end
@@ -41,10 +41,6 @@ class AlbumsController < ApplicationController
   end
 
   private
-
-  def artists_names
-    Artist.all.each { |artist| artist.name }
-  end
 
   def set_artist
     @artist = Artist.find(params[:artist_id])
