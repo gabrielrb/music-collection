@@ -8,7 +8,7 @@
       <%= simple_form_for(@album) do |f| %>
         <%= f.input :name %>
         <%= f.input :year, placeholder: 'Needs to follow the format: yyyy' %>
-        <%= f.input :artist, label: "Artist:", collection: @artists, input_html: { class: "beautiful-dropdown" } %>
+        <%= f.input :artist, label: "Artist:", collection: @artists %>
         <%= f.submit 'Submit', class: 'btn btn-primary' %>
         <%= link_to "Back to artist list", artists_path, class: "btn btn-secondary" %>
       <% end %>
